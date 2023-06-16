@@ -34,7 +34,16 @@ export default function RootLayout({ children }: props) {
               }
             />
           )}
-          <main style={{ paddingTop: "58px", height: "fit", width: "100%" }}>
+          <main
+            style={{
+              paddingTop:
+                pathName !== "/sign-in" && pathName !== "/join"
+                  ? "58px"
+                  : "0px",
+              height: "fit",
+              width: "100%",
+            }}
+          >
             {children}
           </main>
         </Providers>
