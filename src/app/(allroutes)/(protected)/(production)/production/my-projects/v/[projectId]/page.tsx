@@ -19,7 +19,7 @@ export default function ProjectViewPage() {
       <ProjectCard
         isViewFull
         feed={projectFeed}
-        className="hover:bg-white border-0 hover:border-0"
+        className="hover:bg-white border-0 hover:border-0 rounded-none"
       />
       <ProjectTabView />
     </div>

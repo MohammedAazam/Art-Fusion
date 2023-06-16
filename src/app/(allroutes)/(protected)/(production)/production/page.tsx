@@ -14,6 +14,7 @@ export default function Page() {
       {Artists &&
         Artists.map((artist) => (
           <FeedCard
+            className="shadow-lg"
             viewProfile
             key={artist.id}
             feed={artist}

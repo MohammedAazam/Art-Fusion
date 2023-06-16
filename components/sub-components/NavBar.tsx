@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Inter } from "next/font/google";
 import { Button } from "../ui/button";
 import NavButton from "../ui/navbutton";
@@ -6,6 +6,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
 const italiana = Inter({ weight: "700", subsets: ["latin"] });
 
@@ -15,9 +16,10 @@ export default function NavBar({
   isFor?: "PRODUCTION" | "ARTIST" | "DEFAULT";
 }) {
   const session = useSession();
+  const pathname = usePathname();
 
   return (
-    <nav className="bg-[rgba(255,255,255,0.8)] backdrop-blur-sm z-40  h-[58px] sticky top-0 left-0 flex items-center shadow-sm px-10 justify-between">
+    <nav className="bg-[rgba(255,255,255,0.8)] backdrop-blur-sm z-40  h-[58px] fixed w-full top-0 left-0 flex items-center shadow-sm px-10 justify-between">
       <Link
         href={
           isFor == "PRODUCTION"
@@ -34,8 +36,21 @@ export default function NavBar({
       <div className="gap-8 flex items-center">
         {isFor == "PRODUCTION" ? (
           <>
-            <NavButton href="/production/talents">Talents</NavButton>
-            <NavButton href="/production/my-projects">Projects</NavButton>
+            <NavButton
+              href="/production"
+              className={
+                pathname == "/production"
+                  ? "border-b border-primary"
+                  : ""
+              }
+            >
+              Talents
+            </NavButton>
+            <NavButton className={
+                pathname == "/production/my-projects"
+                  ? "border-b border-primary"
+                  : ""
+              } href="/production/my-projects">Projects</NavButton>
             <NavButton
               href="/production/favourites"
               className="hover:bg-pink-100 p-2 rounded-full"

@@ -8,16 +8,21 @@ import { usePathname } from "next/navigation";
 interface props {
   children: React.ReactNode;
   sidebar: React.ReactNode;
-  createProdModal: React.ReactNode;
+  viewArtistSidebar: React.ReactNode;
 }
 
-export default function RootLayout({ children, sidebar }: props) {
+export default function RootLayout({
+  children,
+  sidebar,
+  viewArtistSidebar,
+}: props) {
   const dispatch = useAppDispatch();
   const isAlereadyArtistsExist = useAppSelector(
     ArtistSelector.selectIds
   ).length;
   const pathname = usePathname();
   const isCreateProductionPage = pathname === "/production/create-production";
+  const isArtistPage = pathname.startsWith("/production/v");
 
   if (!isAlereadyArtistsExist) dispatch(fetchIntialArtist());
 
@@ -25,8 +30,8 @@ export default function RootLayout({ children, sidebar }: props) {
     <main
       className="h-full w-full grid gap-3"
       style={{
-        paddingRight: "100px",
-        paddingLeft: "100px",
+        paddingRight: "80px",
+        paddingLeft: "80px",
         paddingTop: "30px",
         paddingBottom: "30px",
         gridTemplateColumns: "repeat(12, minmax(0, 1fr))",
@@ -38,7 +43,7 @@ export default function RootLayout({ children, sidebar }: props) {
           className="h-full w-full sticky top-14"
           style={{ gridColumnStart: 1, gridColumnEnd: 4 }}
         >
-          {sidebar}
+          {isArtistPage ? viewArtistSidebar : sidebar}
         </div>
       )}
       <div

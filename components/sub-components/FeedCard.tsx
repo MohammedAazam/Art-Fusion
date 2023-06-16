@@ -22,7 +22,7 @@ export default function FeedCard({
     <div
       onClick={() => onClick && onClick()}
       className={cn(
-        "bg-white px-8 py-6 flex flex-col rounded-xl shadow-sm shadow-primary-foreground border border-slate-100 transition-all duration-300",
+        "bg-white px-8 py-6 flex flex-col rounded-sm border-b border-slate-200 transition-all duration-300",
         className
       )}
     >

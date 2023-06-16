@@ -10,7 +10,7 @@ export default function DefaultSideBar() {
     const session = useSession();
 
   return (
-    <div className='bg-white sticky top-[58px] left-0 w-full gap-3 rounded-sm flex flex-col items-center' style={{padding:"5px",paddingTop:"24px",paddingBottom:"24px"}}>
+    <div className='bg-white shadow-lg w-full gap-3 rounded-sm flex flex-col items-center' style={{padding:"5px",paddingTop:"24px",paddingBottom:"24px"}}>
         <Avatar className='h-20 w-20'>
             <AvatarImage src={session.data?.user?.image!}/>
             <AvatarFallback>

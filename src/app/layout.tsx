@@ -34,8 +34,9 @@ export default function RootLayout({ children }: props) {
               }
             />
           )}
-
-          {children}
+          <main style={{ paddingTop: "58px", height: "fit", width: "100%" }}>
+            {children}
+          </main>
         </Providers>
       </body>
     </html>
