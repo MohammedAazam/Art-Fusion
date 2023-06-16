@@ -169,34 +169,43 @@ export default function SignUpPage() {
                     )}
                   </div>
 
-                  <div className="px-28 pt-4 block space-y-1">
-                    <Label>Profession</Label>
-                    <Field {...props} as={Input} name={"as"} />
-                    {touched.as && errors.as && (
-                      <span className="text-sm text-red-500 p-1">
-                        {errors.as}
-                      </span>
-                    )}
-                  </div>
-                  <div className="px-28 pt-4 block space-y-1">
-                    <Label>D.O.B</Label>
-                    <Field {...props} as={Input} type={"date"} name={"dob"} />
-                    {touched.dob && errors.dob && (
-                      <span className="text-sm text-red-500 p-1">
-                        {errors.dob}
-                      </span>
-                    )}
-                  </div>
+                  {values.role == "ARTIST" && (
+                    <>
+                      <div className="px-28 pt-4 block space-y-1">
+                        <Label>Profession</Label>
+                        <Field {...props} as={Input} name={"as"} />
+                        {touched.as && errors.as && (
+                          <span className="text-sm text-red-500 p-1">
+                            {errors.as}
+                          </span>
+                        )}
+                      </div>
+                      <div className="px-28 pt-4 block space-y-1">
+                        <Label>D.O.B</Label>
+                        <Field
+                          {...props}
+                          as={Input}
+                          type={"date"}
+                          name={"dob"}
+                        />
+                        {touched.dob && errors.dob && (
+                          <span className="text-sm text-red-500 p-1">
+                            {errors.dob}
+                          </span>
+                        )}
+                      </div>
 
-                  <div className="px-28 pt-4 block space-y-1">
-                    <Label>Age</Label>
-                    <Field {...props} as={Input} name={"age"} />
-                    {touched.age && errors.age && (
-                      <span className="text-sm text-red-500 p-1">
-                        {errors.age}
-                      </span>
-                    )}
-                  </div>
+                      <div className="px-28 pt-4 block space-y-1">
+                        <Label>Age</Label>
+                        <Field {...props} as={Input} name={"age"} />
+                        {touched.age && errors.age && (
+                          <span className="text-sm text-red-500 p-1">
+                            {errors.age}
+                          </span>
+                        )}
+                      </div>
+                    </>
+                  )}
 
                   <div className="px-28 flex py-2 ">
                     <button
