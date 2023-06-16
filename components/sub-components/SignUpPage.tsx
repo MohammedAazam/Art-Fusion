@@ -96,7 +96,7 @@ export default function SignUpPage() {
             {({ values, touched, errors, handleSubmit, ...props }) => {
               return (
                 <>
-                  <pre>{JSON.stringify(values.role)}</pre>
+                  {/* <pre>{JSON.stringify(values.role)}</pre> */}
                   <div className="px-28 flex flex-col items-center gap-3 pt-4">
                     <Label className="text-lg">You want to continue as ?</Label>
                     <RadioGroup
@@ -133,77 +133,81 @@ export default function SignUpPage() {
                     )}
                   </div>
 
-                  <div className="px-28 pt-4 flex gap-3 justify-between">
-                    <div className="block space-y-1">
-                      <Label>Full Name</Label>
-                      <Field {...props} as={Input} name={"name"} />
-                      {touched.name && errors.name && (
-                        <span className="text-sm text-red-500 p-1">
-                          {errors.name}
-                        </span>
-                      )}
-                    </div>
-                    <div className="block space-y-1">
-                      <Label>Email</Label>
-                      <Field {...props} as={Input} name={"userId"} />
-                      {touched.userId && errors.userId && (
-                        <span className="text-sm text-red-500 p-1">
-                          {errors.userId}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="px-28 pt-4 block space-y-1">
-                    <Label>Password</Label>
-                    <Field
-                      {...props}
-                      as={Input}
-                      type={"password"}
-                      name={"password"}
-                    />
-                    {touched.password && errors.password && (
-                      <span className="text-sm text-red-500 p-1">
-                        {errors.password}
-                      </span>
-                    )}
-                  </div>
-
-                  {values.role == "ARTIST" && (
+                  {values.role && (
                     <>
-                      <div className="px-28 pt-4 block space-y-1">
-                        <Label>Profession</Label>
-                        <Field {...props} as={Input} name={"as"} />
-                        {touched.as && errors.as && (
-                          <span className="text-sm text-red-500 p-1">
-                            {errors.as}
-                          </span>
-                        )}
+                      <div className="px-28 pt-4 flex gap-3 justify-between">
+                        <div className="block space-y-1">
+                          <Label>Full Name</Label>
+                          <Field {...props} as={Input} name={"name"} />
+                          {touched.name && errors.name && (
+                            <span className="text-sm text-red-500 p-1">
+                              {errors.name}
+                            </span>
+                          )}
+                        </div>
+                        <div className="block space-y-1">
+                          <Label>Email</Label>
+                          <Field {...props} as={Input} name={"userId"} />
+                          {touched.userId && errors.userId && (
+                            <span className="text-sm text-red-500 p-1">
+                              {errors.userId}
+                            </span>
+                          )}
+                        </div>
                       </div>
+
                       <div className="px-28 pt-4 block space-y-1">
-                        <Label>D.O.B</Label>
+                        <Label>Password</Label>
                         <Field
                           {...props}
                           as={Input}
-                          type={"date"}
-                          name={"dob"}
+                          type={"password"}
+                          name={"password"}
                         />
-                        {touched.dob && errors.dob && (
+                        {touched.password && errors.password && (
                           <span className="text-sm text-red-500 p-1">
-                            {errors.dob}
+                            {errors.password}
                           </span>
                         )}
                       </div>
 
-                      <div className="px-28 pt-4 block space-y-1">
-                        <Label>Age</Label>
-                        <Field {...props} as={Input} name={"age"} />
-                        {touched.age && errors.age && (
-                          <span className="text-sm text-red-500 p-1">
-                            {errors.age}
-                          </span>
-                        )}
-                      </div>
+                      {values.role == "ARTIST" && (
+                        <>
+                          <div className="px-28 pt-4 block space-y-1">
+                            <Label>Profession</Label>
+                            <Field {...props} as={Input} name={"as"} />
+                            {touched.as && errors.as && (
+                              <span className="text-sm text-red-500 p-1">
+                                {errors.as}
+                              </span>
+                            )}
+                          </div>
+                          <div className="px-28 pt-4 block space-y-1">
+                            <Label>D.O.B</Label>
+                            <Field
+                              {...props}
+                              as={Input}
+                              type={"date"}
+                              name={"dob"}
+                            />
+                            {touched.dob && errors.dob && (
+                              <span className="text-sm text-red-500 p-1">
+                                {errors.dob}
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="px-28 pt-4 block space-y-1">
+                            <Label>Age</Label>
+                            <Field {...props} as={Input} name={"age"} />
+                            {touched.age && errors.age && (
+                              <span className="text-sm text-red-500 p-1">
+                                {errors.age}
+                              </span>
+                            )}
+                          </div>
+                        </>
+                      )}
                     </>
                   )}
 
