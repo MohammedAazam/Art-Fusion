@@ -151,6 +151,26 @@ export interface Database {
           updated_at?: string
         }
       }
+      requests: {
+        Row: {
+          artistId: string | null
+          id: string
+          productionProfilesId: string | null
+          status: "PENDING" | "SUCCESS" | "ERROR"
+        }
+        Insert: {
+          artistId?: string | null
+          id?: string
+          productionProfilesId?: string | null
+          status?: "PENDING" | "SUCCESS" | "ERROR"
+        }
+        Update: {
+          artistId?: string | null
+          id?: string
+          productionProfilesId?: string | null
+          status?: "PENDING" | "SUCCESS" | "ERROR"
+        }
+      }
       session: {
         Row: {
           expires: string
@@ -244,6 +264,7 @@ export interface Database {
       [_ in never]: never
     }
     Enums: {
+      request_status: "PENDING" | "ACCEPTED"
       roles: "ARTIST" | "PROD_OWNER"
     }
     CompositeTypes: {

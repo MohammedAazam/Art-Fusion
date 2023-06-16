@@ -1,19 +1,32 @@
 "use client";
-import { MdFolderOpen } from "react-icons/md";
+import ProjectCard from "@/components/sub-components/ProjectCard";
+import { useAppSelector } from "@/store";
+import { ProjectSelector } from "@/store/productions.slice";
+import Link from "next/link";
 
 export default function Page() {
+  const projects = useAppSelector(ProjectSelector.selectAll);
+  const isLoading = useAppSelector((state) => state.project.isLoading);
+
+  if (isLoading) return <h1>Loading projects...</h1>;
 
   return (
-    <div className="text-black  ">
-      <h1 className="text-3xl ">Project</h1>
-      <div className="flex mx-6 rounded  text-3xl bg-gray-100 mt-6">
-        <MdFolderOpen />
-        <p className="ml-2">50</p>
-        <p className="ml-2 text-[20px] text-gray-500">Total Projects</p>
-        <p className="justify-end ml-2 text-[20px] text-gray-500">
-          On time completed rate
-        </p>
-      </div>
+    <div
+      className="grid gap-3"
+      style={{
+        gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+        height: "auto",
+      }}
+    >
+      {projects.map((feed) => (
+        <Link
+          key={feed.id}
+          className="shadow-lg"
+          href={`/artist/v/${feed.id}`}
+        >
+          <ProjectCard className="shadow-md" {...{ feed }} />
+        </Link>
+      ))}
     </div>
   );
 }

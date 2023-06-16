@@ -3,12 +3,14 @@ import { useSelector, TypedUseSelectorHook } from "react-redux";
 import { ArtistsSlice } from "./artists.slice";
 import { LikesSlice } from "./likes.slice";
 import { ProjectSlice } from "./productions.slice";
+import { RequestsSlice } from "./requests.slice";
 
 export const store = configureStore({
   reducer: {
     [ArtistsSlice.name]: ArtistsSlice.reducer,
     [LikesSlice.name]: LikesSlice.reducer,
     [ProjectSlice.name]: ProjectSlice.reducer,
+    [RequestsSlice.name]: RequestsSlice.reducer,
   },
 });
 

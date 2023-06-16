@@ -66,6 +66,32 @@ export default function NavBar({
               </Avatar>
             </NavButton>
           </>
+        ):isFor == "ARTIST" ? (
+          <>
+            <NavButton
+              href="/artist"
+              className={
+                pathname == "/artist"
+                  ? "border-b border-primary"
+                  : ""
+              }
+            >
+              Productions
+            </NavButton>
+            <NavButton className={
+                pathname == "/artist/my-projects"
+                  ? "border-b border-primary"
+                  : ""
+              } href="/artist/my-projects">Projects</NavButton>
+            <NavButton href="/artist/my-profile">
+              <Avatar>
+                <AvatarImage src={session.data?.user?.image ?? '/artist_avatar.jpg'} />
+                <AvatarFallback>
+                  <AvatarImage src='/artist_avatar.jpg'/>
+                </AvatarFallback>
+              </Avatar>
+            </NavButton>
+          </>
         ) : (
           <>
             <Link href={"/sign-in"}>

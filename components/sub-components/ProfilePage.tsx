@@ -9,7 +9,7 @@ import { SupaClient } from "../../utils/supabase";
 
 export type Profile = Database["public"]["Tables"]["user"]["Row"];
 
-export const ProfilePage = () => {
+export const ProfilePage = ({ isForArtist }: { isForArtist?: boolean }) => {
   const session = useSession();
   const user = session.data?.user;
   const [profile, setProfile] = useState<null | Profile>(null);
@@ -31,14 +31,23 @@ export const ProfilePage = () => {
       className="bg-white rounded-lg shadow-md"
       style={{ padding: "28px", gap: "10px" }}
     >
-      <div className="flex items-center flex-col gap-3" style={{ marginBottom: "10px" }}>
+      <div
+        className="flex items-center flex-col gap-3"
+        style={{ marginBottom: "10px" }}
+      >
         <Avatar className="h-36 w-36">
-          <AvatarImage src={profile?.image! ?? '/production_avatar.png'} />
+          <AvatarImage
+            src={
+              profile?.image! ?? isForArtist
+                ? "/artist_avatar.jpg"
+                : "/production_avatar.png"
+            }
+          />
           <AvatarFallback></AvatarFallback>
         </Avatar>
         <h1 className="text-black text-3xl font-bold">{profile?.name}</h1>
         <span className="bg-indigo-200 flex w-fit items-center gap-2 p-1 rounded-full px-3 text-indigo-800">
-          <AiOutlineShop className="text-lg" />
+          {isForArtist ? null : <AiOutlineShop className="text-lg" />}
           {profile?.role_type == "ARTIST" ? "Artist" : "Production House"}
         </span>
       </div>

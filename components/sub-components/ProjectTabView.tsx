@@ -5,7 +5,11 @@ import { AvatarImage } from "@radix-ui/react-avatar";
 import { faker } from "@faker-js/faker";
 import { Button } from "../ui/button";
 
-export default function ProjectTabView() {
+export default function ProjectTabView({
+  isForArtist,
+}: {
+  isForArtist?: boolean;
+}) {
   return (
     <Tabs defaultValue="members" className="w-full bg-white pb-10">
       <TabsList className="flex text-lg rounded-none justify-between bg-white px-4 h-16 border-b border-b-slate-300">
@@ -16,13 +20,15 @@ export default function ProjectTabView() {
         >
           Members
         </TabsTrigger>
-        <TabsTrigger
-          value="requests"
-          className="bg-white flex justify-center"
-          style={{ flex: "1" }}
-        >
-          Requests
-        </TabsTrigger>
+        {!isForArtist && (
+          <TabsTrigger
+            value="requests"
+            className="bg-white flex justify-center"
+            style={{ flex: "1" }}
+          >
+            Requests
+          </TabsTrigger>
+        )}
       </TabsList>
       <TabsContent value="members" className="h-32">
         <div className="flex flex-col px-5">
@@ -53,14 +59,18 @@ export default function ProjectTabView() {
               </div>
             </div>
             <div className="flex gap-3">
-              <Button variant={"destructive"} size={"sm"}>Remove</Button>
+              {!isForArtist && (
+                <Button variant={"destructive"} size={"sm"}>
+                  Remove
+                </Button>
+              )}
               <Button size={"sm"}>View Profile</Button>
             </div>
           </div>
         </div>
       </TabsContent>
       <TabsContent value="requests">
-      <div className="flex flex-col px-5">
+        <div className="flex flex-col px-5">
           <div className="py-5 h-10 border-b border-slate-200 flex items-center">
             <h1>23 Requests</h1>
           </div>

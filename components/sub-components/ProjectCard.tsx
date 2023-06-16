@@ -2,7 +2,6 @@ import { AvatarFallback, AvatarImage, Avatar } from "../ui/avatar";
 import { SlLocationPin } from "react-icons/sl";
 import { badgeVariants } from "../ui/badge";
 import { cn } from "@/lib/utils";
-import { AiOutlineCheckCircle, AiOutlineClockCircle } from "react-icons/ai";
 import { faker } from "@faker-js/faker";
 import Image from "next/image";
 import { Project } from "@/store/productions.slice";
@@ -100,13 +99,15 @@ export default function ProjectCard({
 
         {/* about */}
         <div className={"flex items-center py-5 gap-3"}>
-          <div className="flex">
-            <AiOutlineCheckCircle className="text-xl mr-2 text-green-500" />
-            <span>12 Tasks</span>
-          </div>
-          <div className="flex">
-            <AiOutlineClockCircle className="text-xl mr-2 text-yellow-500" />
-            <span>124 Tasks</span>
+          <div className="flex gap-2 items-center">
+            <Avatar>
+              <AvatarImage src={feed.user.image! ?? "/production_avatar.png"} />
+              <AvatarFallback>B</AvatarFallback>
+            </Avatar>
+            <div className="flex gap-1 justify-center">
+              <h3 className="font-medium">{feed.user.name}</h3>
+              <span className="text-xs bg-indigo-200 text-indigo-500 rounded-full py-1 px-2">Production House</span>
+            </div>
           </div>
         </div>
         {/* skills */}

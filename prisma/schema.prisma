@@ -56,8 +56,23 @@ model user {
   account            account[]
   productionProfiles productionProfiles[]
   session            session[]
+  request            requests[]
 
   @@index([id])
+}
+
+model requests {
+  id                   String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  artist               user?               @relation(fields: [artistId], references: [id])
+  artistId             String?             @db.Uuid
+  status               request_status      @default(PENDING)
+  productionProfiles   productionProfiles? @relation(fields: [productionProfilesId], references: [id])
+  productionProfilesId String?             @db.Uuid
+}
+
+enum request_status {
+  PENDING
+  ACCEPTED
 }
 
 model prev_projects {
@@ -70,20 +85,21 @@ model prev_projects {
 }
 
 model productionProfiles {
-  id                  String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id                  String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   title               String
   address             String
   no_of_shooting_days Int
-  created_at          DateTime @default(now())
-  updated_at          DateTime @default(now())
+  created_at          DateTime   @default(now())
+  updated_at          DateTime   @default(now())
   release_date        DateTime
   payment_provided    Boolean
   restrictions        String
   poster              String
   budget              Int
-  artistsId           String?  @db.Uuid
+  artistsId           String?    @db.Uuid
   gener_on_prod       String[]
-  artists             user?    @relation(fields: [artistsId], references: [id])
+  artists             user?      @relation(fields: [artistsId], references: [id])
+  request             requests[]
 }
 
 enum roles {
