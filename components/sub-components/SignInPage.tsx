@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Field, Formik } from "formik";
 import * as Yup from "yup";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -18,7 +18,6 @@ const schema = Yup.object().shape({
 });
 
 export default function SignInPage() {
-  const session = useSession();
   const [error, setError] = useState("");
   const router = useRouter();
 

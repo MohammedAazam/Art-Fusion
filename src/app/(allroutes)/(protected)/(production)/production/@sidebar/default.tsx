@@ -12,9 +12,9 @@ export default function DefaultSideBar() {
   return (
     <div className='bg-white shadow-lg w-full gap-3 rounded-sm flex flex-col items-center' style={{padding:"5px",paddingTop:"24px",paddingBottom:"24px"}}>
         <Avatar className='h-20 w-20'>
-            <AvatarImage src={session.data?.user?.image!}/>
+            <AvatarImage src={session.data?.user?.image ?? '/production_avatar.png'}/>
             <AvatarFallback>
-                <AvatarImage/>
+                <AvatarImage src='/production_avatar.png'/>
             </AvatarFallback>
         </Avatar>
         <h1>{session.data?.user?.name}</h1>

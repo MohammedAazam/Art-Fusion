@@ -33,7 +33,7 @@ export const ProfilePage = () => {
     >
       <div className="flex items-center flex-col gap-3" style={{ marginBottom: "10px" }}>
         <Avatar className="h-36 w-36">
-          <AvatarImage src={profile?.image!} />
+          <AvatarImage src={profile?.image! ?? '/production_avatar.png'} />
           <AvatarFallback></AvatarFallback>
         </Avatar>
         <h1 className="text-black text-3xl font-bold">{profile?.name}</h1>

@@ -59,9 +59,9 @@ export default function NavBar({
             </NavButton>
             <NavButton href="/production/my-profile">
               <Avatar>
-                <AvatarImage src={session.data?.user?.image!} />
+                <AvatarImage src={session.data?.user?.image ?? '/production_avatar.png'} />
                 <AvatarFallback>
-                  <AvatarImage />
+                  <AvatarImage src='/production_avatar.png'/>
                 </AvatarFallback>
               </Avatar>
             </NavButton>

@@ -1,7 +1,7 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, roles } from "@prisma/client";
 import Credentials from "next-auth/providers/credentials";
 import { compare, hash } from "bcrypt";
 
@@ -24,6 +24,21 @@ export const NextAuthOptions: AuthOptions = {
         },
         for: {
           type: "text",
+        },
+        name: {
+          type: "text",
+        },
+        dob: {
+          type: "date",
+        },
+        as: {
+          type: "text",
+        },
+        age: {
+          type: "number",
+        },
+        role: {
+          type: "number",
         },
       },
       type: "credentials",
@@ -71,9 +86,12 @@ export const NextAuthOptions: AuthOptions = {
           const user = await prisma.user.create({
             data: {
               email: credentials.userId,
-              name: "Test User",
+              name: credentials.name,
               password: hashedPassword,
-              role_type: "ARTIST",
+              role_type: credentials.role as roles,
+              date_of_birth: credentials.dob,
+              as: credentials.as,
+              age: +credentials.age,
             },
           });
 
