@@ -59,12 +59,12 @@ export default function ProjectTabView({
               </div>
             </div>
             <div className="flex gap-3">
-              {!isForArtist && (
+              {**/{!isForArtist && (
                 <Button variant={"destructive"} size={"sm"}>
                   Remove
                 </Button>
               )}
-              <Button size={"sm"}>View Profile</Button>
+              <Button size={"sm"}>View Profile</Button>*/}
             </div>
           </div>
         </div>
