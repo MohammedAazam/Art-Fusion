@@ -49,8 +49,14 @@ export default function DefaultSideBar() {
       </span>
       <Button
         size={"sm"}
-        disabled={typeof isMemberOfThisProject == "undefined"}
-        variant={isRequested ? "secondary" : "default"}
+        disabled={typeof isMemberOfThisProject !== "undefined"}
+        variant={
+          typeof isMemberOfThisProject !== "undefined"
+            ? "link"
+            : isRequested
+            ? "secondary"
+            : "default"
+        }
         onClick={() => {
           if (isRequested)
             dispatch(
@@ -62,7 +68,7 @@ export default function DefaultSideBar() {
             );
         }}
       >
-        {typeof isMemberOfThisProject == "undefined"
+        {typeof isMemberOfThisProject !== "undefined"
           ? "Your Member Of This Project"
           : isRequested
           ? "Cancel Request"

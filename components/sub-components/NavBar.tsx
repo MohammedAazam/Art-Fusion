@@ -39,18 +39,21 @@ export default function NavBar({
             <NavButton
               href="/production"
               className={
-                pathname == "/production"
-                  ? "border-b border-primary"
-                  : ""
+                pathname == "/production" ? "border-b border-primary" : ""
               }
             >
               Talents
             </NavButton>
-            <NavButton className={
+            <NavButton
+              className={
                 pathname == "/production/my-projects"
                   ? "border-b border-primary"
                   : ""
-              } href="/production/my-projects">Projects</NavButton>
+              }
+              href="/production/my-projects"
+            >
+              Projects
+            </NavButton>
             <NavButton
               href="/production/favourites"
               className="hover:bg-pink-100 p-2 rounded-full"
@@ -59,35 +62,31 @@ export default function NavBar({
             </NavButton>
             <NavButton href="/production/my-profile">
               <Avatar>
-                <AvatarImage src={session.data?.user?.image ?? '/production_avatar.png'} />
+                <AvatarImage
+                  src={session.data?.user?.image ?? "/production_avatar.png"}
+                />
                 <AvatarFallback>
-                  <AvatarImage src='/production_avatar.png'/>
+                  <AvatarImage src="/production_avatar.png" />
                 </AvatarFallback>
               </Avatar>
             </NavButton>
           </>
-        ):isFor == "ARTIST" ? (
+        ) : isFor == "ARTIST" ? (
           <>
             <NavButton
               href="/artist"
-              className={
-                pathname == "/artist"
-                  ? "border-b border-primary"
-                  : ""
-              }
+              className={pathname == "/artist" ? "border-b border-primary" : ""}
             >
               Productions
             </NavButton>
-            <NavButton className={
-                pathname == "/artist/my-projects"
-                  ? "border-b border-primary"
-                  : ""
-              } href="/artist/my-projects">Projects</NavButton>
+
             <NavButton href="/artist/my-profile">
               <Avatar>
-                <AvatarImage src={session.data?.user?.image ?? '/artist_avatar.jpg'} />
+                <AvatarImage
+                  src={session.data?.user?.image ?? "/artist_avatar.jpg"}
+                />
                 <AvatarFallback>
-                  <AvatarImage src='/artist_avatar.jpg'/>
+                  <AvatarImage src="/artist_avatar.jpg" />
                 </AvatarFallback>
               </Avatar>
             </NavButton>
