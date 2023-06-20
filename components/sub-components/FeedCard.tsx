@@ -30,7 +30,7 @@ export default function FeedCard({
       <div className="flex w-full items-center justify-between">
         <div className="flex items-center">
           <Avatar className="h-12 w-12">
-            <AvatarImage src={feed.image!} />
+            <AvatarImage src={feed.image ?? "/artist_avatar.jpg"} />
             <AvatarFallback>
               <AvatarImage />
             </AvatarFallback>

@@ -38,7 +38,7 @@ export const ProfilePage = ({ isForArtist }: { isForArtist?: boolean }) => {
         <Avatar className="h-36 w-36">
           <AvatarImage
             src={
-              profile?.image! ?? isForArtist
+              profile?.image ?? isForArtist
                 ? "/artist_avatar.jpg"
                 : "/production_avatar.png"
             }

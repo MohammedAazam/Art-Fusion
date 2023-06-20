@@ -101,7 +101,7 @@ export default function ProjectCard({
         <div className={"flex items-center py-5 gap-3"}>
           <div className="flex gap-2 items-center">
             <Avatar>
-              <AvatarImage src={feed.user.image! ?? "/production_avatar.png"} />
+              <AvatarImage src={feed.user.image ?? "/production_avatar.png"} />
               <AvatarFallback>B</AvatarFallback>
             </Avatar>
             <div className="flex gap-1 justify-center">
