@@ -3,6 +3,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useAppDispatch } from "@/lib/hooks";
 import { useAppSelector } from "@/store";
+import { ProjectSelector } from "@/store/productions.slice";
 import {
   RequestsSelector,
   addRequest,
@@ -19,11 +20,14 @@ export default function DefaultSideBar() {
   const projectId = params.projectId;
   const dispatch = useAppDispatch();
   const requestIds = useAppSelector(RequestsSelector.selectIds);
+  const project = useAppSelector((state) =>
+    ProjectSelector.selectById(state, projectId)
+  );
   const [isRequested, setIsRequested] = useState(false);
 
   useEffect(() => {
     setIsRequested(requestIds.includes(session.data?.user?.id!));
-  }, [projectId, requestIds, session.data?.user,params]);
+  }, [projectId, requestIds, session.data?.user, params]);
 
   return (
     <div
@@ -31,14 +35,14 @@ export default function DefaultSideBar() {
       style={{ padding: "5px", paddingTop: "24px", paddingBottom: "24px" }}
     >
       <Avatar style={{ height: "120px", width: "120px" }}>
-        <AvatarImage src={session.data?.user?.image ?? "/artist_avatar.jpg"} />
+        <AvatarImage src={project?.user.image ?? "/production_avatar.jpg"} />
         <AvatarFallback>
           <AvatarImage src="/artist_avatar.jpg" />
         </AvatarFallback>
       </Avatar>
-      <h1>{session.data?.user?.name}</h1>
+      <h1>{project?.user.name}</h1>
       <span className="bg-indigo-200 text-indigo-700 py-1 px-2 rounded-full text-xs">
-        {"Talent"}
+        {"Production House"}
       </span>
       <Button
         size={"sm"}

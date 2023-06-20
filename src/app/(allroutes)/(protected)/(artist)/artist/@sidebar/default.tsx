@@ -20,7 +20,7 @@ export default function DefaultSideBar() {
       </Avatar>
       <h1>{session.data?.user?.name}</h1>
       <span className="bg-indigo-200 text-indigo-700 py-1 px-2 rounded-full text-xs">
-        Production House
+        Talent
       </span>
     </div>
   );

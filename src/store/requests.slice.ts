@@ -5,17 +5,14 @@ import {
 } from "@reduxjs/toolkit";
 import { RootState } from ".";
 import { SupaClient } from "../../utils/supabase";
-
-type Request = {
-  artistId: string;
-};
+import { Members } from "./productions.slice";
 
 export const addRequest = createAsyncThunk<
   any,
   { artistId: string; projectId: string },
   { rejectValue: any }
 >(
-  "/requests/add",
+  "/requests/addRequest",
   async (
     { artistId, projectId },
     { fulfillWithValue, rejectWithValue, dispatch }
@@ -26,12 +23,19 @@ export const addRequest = createAsyncThunk<
           artistId,
           productionProfilesId: projectId,
         })
-        .select("artistId")
+        .select("user(id,name,image,as)")
         .single();
-      const id = response.data?.artistId;
-      if (!response.error && id) dispatch(addOneRequest({ artistId: id }));
+      if (!response.error) {
+        const res = await SupaClient.from("user")
+          .select("id,name,image,as")
+          .eq("id", artistId)
+          .single();
+        const data = res.data;
+        if (data) dispatch(addOneRequest(data));
+      }
       return fulfillWithValue(true);
     } catch (e) {
+      console.log(e);
       return rejectWithValue(true);
     }
   }
@@ -69,18 +73,18 @@ export const fetchRequests = createAsyncThunk<
   async ({ projectId }, { fulfillWithValue, rejectWithValue, dispatch }) => {
     try {
       const response = await SupaClient.from("requests")
-        .select("*")
+        .select("user(id,name,image,as)")
         .eq("productionProfilesId", projectId)
         .eq("status", "PENDING");
-      return fulfillWithValue(response.data);
+      return fulfillWithValue(response.data?.map((response) => response.user));
     } catch (e) {
       return rejectWithValue(true);
     }
   }
 );
 
-const RequestsAdapter = createEntityAdapter<Request>({
-  selectId: (Like) => Like.artistId,
+const RequestsAdapter = createEntityAdapter<Members>({
+  selectId: (Request) => Request.id,
 });
 
 export const RequestsSlice = createSlice({
@@ -94,7 +98,7 @@ export const RequestsSlice = createSlice({
   }),
   extraReducers(builder) {
     builder
-      .addCase(fetchRequests.pending, (state, action) => {
+      .addCase(fetchRequests.pending, (state, _action) => {
         state.isLoading = true;
       })
       .addCase(fetchRequests.fulfilled, (state, action) => {

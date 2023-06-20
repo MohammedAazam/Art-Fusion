@@ -78,6 +78,23 @@ export interface Database {
           userId?: string
         }
       }
+      members: {
+        Row: {
+          id: string
+          productionProfilesId: string | null
+          userId: string | null
+        }
+        Insert: {
+          id?: string
+          productionProfilesId?: string | null
+          userId?: string | null
+        }
+        Update: {
+          id?: string
+          productionProfilesId?: string | null
+          userId?: string | null
+        }
+      }
       prev_projects: {
         Row: {
           id: string
@@ -156,19 +173,19 @@ export interface Database {
           artistId: string | null
           id: string
           productionProfilesId: string | null
-          status: "PENDING" | "SUCCESS" | "ERROR"
+          status: "ACCEPTED" | "PENDING"
         }
         Insert: {
           artistId?: string | null
           id?: string
           productionProfilesId?: string | null
-          status?: "PENDING" | "SUCCESS" | "ERROR"
+          status?: "ACCEPTED" | "PENDING"
         }
         Update: {
           artistId?: string | null
           id?: string
           productionProfilesId?: string | null
-          status?: "PENDING" | "SUCCESS" | "ERROR"
+          status?: "ACCEPTED" | "PENDING"
         }
       }
       session: {

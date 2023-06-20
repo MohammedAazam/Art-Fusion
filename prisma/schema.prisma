@@ -57,6 +57,7 @@ model user {
   productionProfiles productionProfiles[]
   session            session[]
   request            requests[]
+  members            members[]
 
   @@index([id])
 }
@@ -84,6 +85,15 @@ model prev_projects {
   released_date   String
 }
 
+model members {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  productionProfiles   productionProfiles? @relation(fields: [productionProfilesId], references: [id])
+  productionProfilesId String?             @db.Uuid
+  user                 user?               @relation(fields: [userId], references: [id])
+  userId               String?             @db.Uuid
+}
+
 model productionProfiles {
   id                  String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   title               String
@@ -100,6 +110,7 @@ model productionProfiles {
   gener_on_prod       String[]
   artists             user?      @relation(fields: [artistsId], references: [id])
   request             requests[]
+  members             members[]
 }
 
 enum roles {
