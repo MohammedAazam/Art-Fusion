@@ -112,13 +112,13 @@ export default function SignInPage() {
           </Formik>
 
           <div className="px-28 flex py-2">
-            <button
+            {/**<button
               onClick={() => signIn("google")}
               className="p-24 py-2 w-full flex items-center mb-4 bg-white shadow-lg hover:shadow-gray-500 border-2 border-gray-700 text-blue-600 font-bold rounded-lg"
             >
               <FcGoogle className=" mr-2 text-xl" />
               <span className="flex items-center">Sign in with google</span>
-            </button>
+            </button>*/}
           </div>
           <h3 className="text-sm  mt-10 dark:text-black font-semibold text-center">
             <Link href="/join" className="underline">
