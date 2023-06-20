@@ -21,7 +21,7 @@ export default function DefaultViewArtistSideBar() {
       style={{ padding: "5px", paddingTop: "24px", paddingBottom: "24px" }}
     >
       <Avatar className="h-20 w-20">
-        <AvatarImage src={artist?.image!} />
+        <AvatarImage src={artist?.image ?? "/production_avatar.jpg"} />
         <AvatarFallback>
           <AvatarImage />
         </AvatarFallback>

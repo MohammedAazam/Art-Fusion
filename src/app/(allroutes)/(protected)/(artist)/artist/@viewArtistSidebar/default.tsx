@@ -36,12 +36,12 @@ export default function DefaultSideBar() {
       style={{ padding: "5px", paddingTop: "24px", paddingBottom: "24px" }}
     >
       <Avatar style={{ height: "120px", width: "120px" }}>
-        <AvatarImage src={project?.user.image ?? "/production_avatar.jpg"} />
+        <AvatarImage src={project?.user?.image ?? "/production_avatar.jpg"} />
         <AvatarFallback>
           <AvatarImage src="/production_avatar.jpg" />
         </AvatarFallback>
       </Avatar>
-      <h1>{project?.user.name}</h1>
+      <h1>{project?.user?.name}</h1>
       <span className="bg-indigo-200 text-indigo-700 py-1 px-2 rounded-full text-xs">
         {"Production House"}
       </span>
