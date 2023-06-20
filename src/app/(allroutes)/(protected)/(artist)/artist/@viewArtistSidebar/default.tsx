@@ -3,7 +3,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useAppDispatch } from "@/lib/hooks";
 import { useAppSelector } from "@/store";
-import { ProjectSelector } from "@/store/productions.slice";
+import { MembersSelector, ProjectSelector } from "@/store/productions.slice";
 import {
   RequestsSelector,
   addRequest,
@@ -23,7 +23,9 @@ export default function DefaultSideBar() {
   const project = useAppSelector((state) =>
     ProjectSelector.selectById(state, projectId)
   );
-  
+  const isMemberOfThisProject = useAppSelector((state) =>
+    MembersSelector.selectById(state, session.data?.user?.id!)
+  );
   const [isRequested, setIsRequested] = useState(false);
 
   useEffect(() => {
@@ -47,6 +49,7 @@ export default function DefaultSideBar() {
       </span>
       <Button
         size={"sm"}
+        disabled={typeof isMemberOfThisProject == "undefined"}
         variant={isRequested ? "secondary" : "default"}
         onClick={() => {
           if (isRequested)
@@ -59,7 +62,11 @@ export default function DefaultSideBar() {
             );
         }}
       >
-        {isRequested ? "Cancel Request" : "Send Request"}
+        {typeof isMemberOfThisProject == "undefined"
+          ? "Your Member Of This Project"
+          : isRequested
+          ? "Cancel Request"
+          : "Send Request"}
       </Button>
     </div>
   );
