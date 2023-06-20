@@ -95,9 +95,9 @@ export default function SignInPage() {
                       </span>
                     )}
                   </div>
-                  <div className="text-sm  p-28 flex flex-row text-black py-2 justify-end">
+                  {/* <div className="text-sm  p-28 flex flex-row text-black py-2 justify-end">
                     <p>Forgot Password</p>
-                  </div>
+                  </div> */}
                   <div className="px-28 flex py-2 ">
                     <button
                       onClick={() => handleSubmit()}

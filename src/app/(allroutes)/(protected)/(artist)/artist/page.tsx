@@ -8,7 +8,7 @@ export default function Page() {
   const projects = useAppSelector(ProjectSelector.selectAll);
   const isLoading = useAppSelector((state) => state.project.isLoading);
 
-  if (isLoading) return <h1>Loading projects...</h1>;
+  if (isLoading || !projects) return <h1>Loading projects...</h1>;
 
   return (
     <div

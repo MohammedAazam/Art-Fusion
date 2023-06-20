@@ -30,9 +30,9 @@ export default function DefaultViewArtistSideBar() {
       <span className="bg-indigo-200 text-indigo-700 py-1 px-2 rounded-full text-xs">
         {artist?.as}
       </span>
-      <Button size={"lg"} className="gap-2">
+      {/* <Button size={"lg"} className="gap-2">
         Invite <AiOutlineMail className="text-lg" />
-      </Button>
+      </Button> */}
     </div>
   );
 }

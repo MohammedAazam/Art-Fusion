@@ -15,13 +15,13 @@ export default function ArtistTabProfile() {
           >
             Gallery
           </TabsTrigger>
-          <TabsTrigger
+          {/* <TabsTrigger
             value="prev_projects"
             className="bg-white flex justify-center"
             style={{ flex: "1" }}
           >
             Previous Projects
-          </TabsTrigger>
+          </TabsTrigger> */}
         </TabsList>
         <TabsContent
           value="gallery"

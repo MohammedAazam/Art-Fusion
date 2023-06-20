@@ -37,32 +37,32 @@ export default function FeedCard({
           </Avatar>
           <div className={"flex flex-col px-3 gap-2"}>
             <div className="flex items-center gap-3">
-              <h1 className="text-md font-medium">{feed.name}</h1>
+              <h1 className="text-md font-medium">{feed?.name}</h1>
               <span
                 className={cn(
                   badgeVariants({ variant: "secondary" }),
                   "bg-blue-50 py-1 h-fit text-primary gap-2"
                 )}
               >
-                {feed.age} years old
+                {feed?.age} years old
               </span>
             </div>
             <div className="flex gap-4">
               <span className={"flex gap-2 items-center"}>
                 <SlBadge className="text-lg text-primary" />
-                <span className="text-sm">{feed.as}</span>
+                <span className="text-sm">{feed?.as}</span>
               </span>
               <span className={"flex gap-2 items-center"}>
                 <SlLocationPin className="text-lg text-primary" />{" "}
-                <span className="text-sm">{feed.address}</span>
+                <span className="text-sm">{feed?.address}</span>
               </span>
             </div>
           </div>
         </div>
         <div className="flex gap-3 items-center">
-          <LikeButton postId={feed.id} />
+          <LikeButton postId={feed?.id} />
           {viewProfile && (
-            <Link href={`/production/v/${feed.id}`}>
+            <Link href={`/production/v/${feed?.id}`}>
               <Button
                 onClick={() => {
                   console.log("liked");
