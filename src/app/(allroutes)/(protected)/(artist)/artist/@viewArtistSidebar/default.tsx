@@ -23,6 +23,7 @@ export default function DefaultSideBar() {
   const project = useAppSelector((state) =>
     ProjectSelector.selectById(state, projectId)
   );
+  
   const [isRequested, setIsRequested] = useState(false);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function DefaultSideBar() {
       <Avatar style={{ height: "120px", width: "120px" }}>
         <AvatarImage src={project?.user.image ?? "/production_avatar.jpg"} />
         <AvatarFallback>
-          <AvatarImage src="/artist_avatar.jpg" />
+          <AvatarImage src="/production_avatar.jpg" />
         </AvatarFallback>
       </Avatar>
       <h1>{project?.user.name}</h1>
