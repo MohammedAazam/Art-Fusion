@@ -1,14 +1,13 @@
 "use client";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import { useAppSelector } from "@/store";
 import { ArtistSelector } from "@/store/artists.slice";
 import { AvatarFallback } from "@radix-ui/react-avatar";
 import { useParams } from "next/navigation";
 import React from "react";
-import { AiOutlineMail } from "react-icons/ai";
 
 export default function DefaultViewArtistSideBar() {
+  
   const params = useParams();
   const id = params.artistId;
   const artist = useAppSelector((state) =>
@@ -21,9 +20,9 @@ export default function DefaultViewArtistSideBar() {
       style={{ padding: "5px", paddingTop: "24px", paddingBottom: "24px" }}
     >
       <Avatar className="h-20 w-20">
-        <AvatarImage src={artist?.image ?? "/production_avatar.jpg"} />
+        <AvatarImage src={artist?.image ?? "/artist_avatar.jpg"} />
         <AvatarFallback>
-          <AvatarImage />
+          <AvatarImage src="/artist_avatar.jpg"/>
         </AvatarFallback>
       </Avatar>
       <h1>{artist?.name}</h1>

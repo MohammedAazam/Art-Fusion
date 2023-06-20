@@ -7,6 +7,8 @@ import React from "react";
 export default function DefaultSideBar() {
   const session = useSession();
 
+  if(!session.data?.user) null;
+
   return (
     <div
       className="bg-white shadow-lg w-full gap-3 rounded-sm flex flex-col items-center"
