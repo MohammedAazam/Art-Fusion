@@ -36,7 +36,7 @@ export default function DefaultSideBar() {
       style={{ padding: "5px", paddingTop: "24px", paddingBottom: "24px" }}
     >
       <Avatar style={{ height: "120px", width: "120px" }}>
-        <AvatarImage src={project?.user?.image ?? "/production_avatar.jpg"} />
+        <AvatarImage src={"/production_avatar.jpg"} />
         <AvatarFallback>
           <AvatarImage src="/production_avatar.jpg" />
         </AvatarFallback>
