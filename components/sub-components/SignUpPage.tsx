@@ -113,7 +113,7 @@ export default function SignUpPage() {
                           className="text-md font-bold text-primary"
                           htmlFor="ARTIST"
                         >
-                          Talent
+                          Talent/Technician
                         </Label>
                       </div>
                       <div className="flex items-center space-x-2">
