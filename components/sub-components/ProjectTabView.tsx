@@ -61,7 +61,7 @@ export default function ProjectTabView({
               >
                 <div className="flex items-center">
                   <Avatar className="h-14 w-14 border border-slate-300">
-                    <AvatarImage src={member.image ?? "artist_avatar.jpg"} />
+                    <AvatarImage src={member.image ?? "/artist_avatar.jpg"} />
                     <AvatarFallback>
                       <AvatarImage />
                     </AvatarFallback>
@@ -106,7 +106,7 @@ export default function ProjectTabView({
               >
                 <div className="flex items-center">
                   <Avatar className="h-14 w-14 border border-slate-300">
-                    <AvatarImage src={member.image ?? "artist_avatar.jpg"} />
+                    <AvatarImage src={member.image ?? "/artist_avatar.jpg"} />
                     <AvatarFallback>
                       <AvatarImage />
                     </AvatarFallback>
